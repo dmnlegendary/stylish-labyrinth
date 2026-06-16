@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://vyvr230ae8ip"]
+
+[ext_resource type="Script" uid="uid://ckrhiomx4ivuw" path="res://Scripts/room_main.gd" id="1_dfbnw"]
+[ext_resource type="Texture2D" uid="uid://camflk2uwcxoh" path="res://Assets/images/hall_3doors.png" id="1_g8wx0"]
+[ext_resource type="AudioStream" uid="uid://5m0vfbpgrpc8" path="res://Assets/sound_effects/soundForHovering.mp3" id="3_u6dn8"]
+[ext_resource type="AudioStream" uid="uid://btmcax18vu2id" path="res://Assets/sound_effects/OpenDoor.mp3" id="4_h4o0m"]
+
+[node name="RoomMain" type="Node2D"]
+editor_description = "The size of the image is about 1152x648 pixels"
+script = ExtResource("1_dfbnw")
+left_door_scene = "uid://dj6rwbpxfagn3"
+center_door_scene = "uid://b1r8l2umdmtno"
+right_door_scene = "uid://67tcc733ish4"
+
+[node name="Hall3Doors" type="Sprite2D" parent="."]
+editor_description = "The size of the window is "
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_g8wx0")
+
+[node name="DoorLeftArea" type="Area2D" parent="."]
+position = Vector2(-10, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DoorLeftArea"]
+position = Vector2(-231, -207)
+polygon = PackedVector2Array(0, -1, -27, 3, -48, 29, -62, 69, -62, 400, 53, 292, 53, 51, 41, 22, 21, 4)
+
+[node name="Polygon2D" type="Polygon2D" parent="DoorLeftArea"]
+visible = false
+position = Vector2(-231, -207)
+color = Color(1, 1, 0, 0.164706)
+polygon = PackedVector2Array(0, -1, -27, 3, -48, 29, -62, 69, -62, 400, 53, 292, 53, 51, 41, 22, 21, 4)
+
+[node name="DoorCenterArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DoorCenterArea"]
+position = Vector2(0, -178)
+polygon = PackedVector2Array(0, 0, 22, 0, 53, 22, 59, 47, 59, 193, -57, 193, -57, 44, -47, 20, -20, 0)
+
+[node name="Polygon2D" type="Polygon2D" parent="DoorCenterArea"]
+visible = false
+position = Vector2(0, -178)
+color = Color(1, 1, 0, 0.164706)
+polygon = PackedVector2Array(0, 0, 22, 0, 53, 22, 59, 47, 59, 193, -57, 193, -57, 44, -47, 20, -20, 0)
+
+[node name="DoorRightArea" type="Area2D" parent="."]
+position = Vector2(11, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DoorRightArea"]
+position = Vector2(260, -209)
+polygon = PackedVector2Array(1, 0, 28, 3, 51, 26, 66, 68, 65, 429, -59, 308, -59, 67, -43, 26, -21, 4)
+
+[node name="Polygon2D" type="Polygon2D" parent="DoorRightArea"]
+visible = false
+position = Vector2(260, -209)
+color = Color(1, 1, 0, 0.164706)
+polygon = PackedVector2Array(1, 0, 28, 3, 51, 26, 66, 68, 65, 429, -59, 308, -59, 67, -43, 26, -21, 4)
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u6dn8")
+volume_db = -4.0
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_h4o0m")
+
+[connection signal="input_event" from="DoorLeftArea" to="." method="_on_door_left_area_input_event"]
+[connection signal="mouse_entered" from="DoorLeftArea" to="." method="_on_door_left_area_mouse_entered"]
+[connection signal="mouse_exited" from="DoorLeftArea" to="." method="_on_door_left_area_mouse_exited"]
+[connection signal="input_event" from="DoorCenterArea" to="." method="_on_door_center_area_input_event"]
+[connection signal="mouse_entered" from="DoorCenterArea" to="." method="_on_door_center_area_mouse_entered"]
+[connection signal="mouse_exited" from="DoorCenterArea" to="." method="_on_door_center_area_mouse_exited"]
+[connection signal="input_event" from="DoorRightArea" to="." method="_on_door_right_area_input_event"]
+[connection signal="mouse_entered" from="DoorRightArea" to="." method="_on_door_right_area_mouse_entered"]
+[connection signal="mouse_exited" from="DoorRightArea" to="." method="_on_door_right_area_mouse_exited"]

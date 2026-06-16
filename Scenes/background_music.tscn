@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://3he5rthykomm"]
+
+[ext_resource type="AudioStream" uid="uid://buh0ikyvoa01c" path="res://Assets/music/Lilium From Elfen Lied_320kbps.mp3" id="1_pu4hd"]
+
+[node name="BackgroundMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_pu4hd")
+volume_db = -10.895
+autoplay = true
+parameters/looping = true

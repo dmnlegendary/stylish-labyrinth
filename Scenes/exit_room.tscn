@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://67tcc733ish4"]
+
+[ext_resource type="Texture2D" uid="uid://6itxvbm1unuk" path="res://Assets/images/exit.png" id="1_kwm6o"]
+
+[node name="ExitRoom" type="Node2D"]
+
+[node name="ExitStairs" type="Sprite2D" parent="."]
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("1_kwm6o")
