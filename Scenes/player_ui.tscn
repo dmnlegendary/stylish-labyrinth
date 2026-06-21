@@ -1,7 +1,24 @@
-[gd_scene format=3 uid="uid://l2n0341t50f4"]
+[gd_scene load_steps=2 format=3 uid="uid://l2n0341t50f4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ai1x"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="PlayerUI" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_right = 255.0
+z_index = 1
+offset_right = 300.0
 offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4ai1x")
+
+[node name="CharacterPortrait" type="AnimatedSprite2D" parent="Panel"]
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 571.0
+offset_right = 289.0
+offset_bottom = 633.0
+theme_override_font_sizes/font_size = 40
+text = "Hello there!"
+autowrap_mode = 2

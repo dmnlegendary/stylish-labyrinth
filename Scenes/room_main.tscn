@@ -62,6 +62,9 @@ volume_db = -4.0
 [node name="ClickSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_h4o0m")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(-112, 0)
+
 [connection signal="input_event" from="DoorLeftArea" to="." method="_on_door_left_area_input_event"]
 [connection signal="mouse_entered" from="DoorLeftArea" to="." method="_on_door_left_area_mouse_entered"]
 [connection signal="mouse_exited" from="DoorLeftArea" to="." method="_on_door_left_area_mouse_exited"]

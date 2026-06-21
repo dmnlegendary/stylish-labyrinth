@@ -7,3 +7,6 @@
 [node name="EmptyCorridor" type="Sprite2D" parent="."]
 scale = Vector2(0.42, 0.42)
 texture = ExtResource("1_6jvb1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(-112, 0)
