@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1r8l2umdmtno"]
+[gd_scene load_steps=3 format=3 uid="uid://b1r8l2umdmtno"]
 
 [ext_resource type="Texture2D" uid="uid://cr442uoe0htv" path="res://Assets/images/EmptyCorridor.png" id="1_6jvb1"]
+[ext_resource type="Script" uid="uid://by3lrgoaps4ik" path="res://Scripts/empty_room.gd" id="1_bq61s"]
 
 [node name="EmptyRoom" type="Node2D"]
+script = ExtResource("1_bq61s")
+main_hallway_scene = "uid://vyvr230ae8ip"
 
 [node name="EmptyCorridor" type="Sprite2D" parent="."]
 scale = Vector2(0.42, 0.42)

@@ -21,7 +21,8 @@ var is_transitioning: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# In this case is not necesary to load anything prior the scene itself
-	pass # Replace with function body.
+	# Except for when walking animation is over
+	PlayerUi.refresh_idle_state()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -55,7 +56,6 @@ func _on_door_right_area_input_event(viewport: Node, event: InputEvent, shape_id
 func enter_door(door_chosen: String):
 	# If the player already chose to move to another room then no need to run this function
 	if is_transitioning == true:
-		
 		return
 	else:
 		is_transitioning = true
@@ -63,6 +63,8 @@ func enter_door(door_chosen: String):
 	# We make sure the mouse hover icon is back to arrow form
 	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 	
+	# We run walking animation
+	PlayerUi.start_walking()
 	
 	# Play the click sound immediately!
 	click_sound.play()

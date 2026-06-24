@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj6rwbpxfagn3"]
+[gd_scene load_steps=3 format=3 uid="uid://dj6rwbpxfagn3"]
 
 [ext_resource type="Texture2D" uid="uid://okh71ay8kk4a" path="res://Assets/images/TrapCell.png" id="1_1el2d"]
+[ext_resource type="Script" uid="uid://pqng8vwjyojp" path="res://Scripts/trap_room.gd" id="1_5abd6"]
 
 [node name="TrapRoom" type="Node2D"]
+script = ExtResource("1_5abd6")
+main_hallway_scene = "uid://vyvr230ae8ip"
 
 [node name="TrapCell" type="Sprite2D" parent="."]
 scale = Vector2(0.42, 0.42)
