@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bondage Labyrinth"
-run/main_scene="uid://vyvr230ae8ip"
+run/main_scene="uid://db87l2h0lfjiu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
