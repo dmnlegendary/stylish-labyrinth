@@ -161,7 +161,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_4ai1x")
 
 [node name="CharacterPortrait" type="AnimatedSprite2D" parent="Panel"]
 sprite_frames = SubResource("SpriteFrames_4ai1x")
-animation = &"idle1_free"
+animation = &"walk_free"
 offset = Vector2(150, 324)
 
 [node name="Label" type="Label" parent="Panel"]

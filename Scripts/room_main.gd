@@ -1,9 +1,9 @@
 extends Node2D
 
 # Export variables to assign scenes in the Inspector
-@export_file("*.tscn") var left_door_scene: String
-@export_file("*.tscn") var center_door_scene: String
-@export_file("*.tscn") var right_door_scene: String
+@export_file("*.tscn") var trap_door_scene: String
+@export_file("*.tscn") var empty_door_scene: String
+@export_file("*.tscn") var exit_door_scene: String
 
 # Grab references to the visual polygons you just created
 @onready var left_highlight = $"DoorLeftArea/Polygon2D"
@@ -14,6 +14,11 @@ extends Node2D
 @onready var hover_sound = $HoverSound
 @onready var click_sound = $ClickSound
 
+# Variable to control the transition into rooms
+var trapTrigger: int = 70 - (PlayerUi.rooms_crossed*5)
+var nothingTrigger: int = 20 + (PlayerUi.rooms_crossed*5)
+var escapeTrigger: int = 10
+
 # Variable to control the transition between rooms
 # Tracks if the player has already clicked on a door
 var is_transitioning: bool = false
@@ -23,6 +28,11 @@ func _ready() -> void:
 	# In this case is not necesary to load anything prior the scene itself
 	# Except for when walking animation is over
 	PlayerUi.refresh_idle_state()
+	
+	# Set a seed for random numbers
+	randomize()
+	
+	# 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -77,16 +87,27 @@ func enter_door(door_chosen: String):
 	
 	print("Moving to the next room...")
 	# Scene changing code will go here later
+	# The formula to calculate which room is gonna be loaded after is:
+	# For trap_room: 70% and we decrease it for 5% each time the player crosses a room
+	var probability_for_player = randi_range(1, 100)
+	print("La probabilidad obtenida fue de: ", probability_for_player)
+	
 	
 	# Lets determine which scene is gonna be loaded after
 	var next_scene_path = ""
 	
-	if door_chosen == "left":
-		next_scene_path = left_door_scene
-	elif door_chosen == "center":
-		next_scene_path = center_door_scene
-	elif door_chosen == "right":
-		next_scene_path = right_door_scene
+	if probability_for_player <= trapTrigger:
+		next_scene_path = trap_door_scene
+	elif probability_for_player > trapTrigger and probability_for_player <= 100-escapeTrigger:
+		next_scene_path = empty_door_scene
+	elif probability_for_player > trapTrigger + nothingTrigger:
+		next_scene_path = exit_door_scene
+		
+	if PlayerUi.rooms_crossed <= 10:
+		PlayerUi.rooms_crossed = PlayerUi.rooms_crossed + 1
+	
+	print("The amount of ",PlayerUi.rooms_crossed, " rooms have been crossed")
+	print("While the rates for triggers (trap, empty and exit) are:\n", trapTrigger, ",", nothingTrigger, ",", escapeTrigger)
 		
 	# After setting up which room is gonna be selected
 	if next_scene_path != "":

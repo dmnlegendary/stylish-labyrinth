@@ -8,9 +8,9 @@
 [node name="RoomMain" type="Node2D"]
 editor_description = "The size of the image is about 1152x648 pixels"
 script = ExtResource("1_dfbnw")
-left_door_scene = "uid://dj6rwbpxfagn3"
-center_door_scene = "uid://b1r8l2umdmtno"
-right_door_scene = "uid://67tcc733ish4"
+trap_door_scene = "uid://dj6rwbpxfagn3"
+empty_door_scene = "uid://b1r8l2umdmtno"
+exit_door_scene = "uid://67tcc733ish4"
 
 [node name="Hall3Doors" type="Sprite2D" parent="."]
 editor_description = "The size of the window is "

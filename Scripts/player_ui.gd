@@ -2,6 +2,7 @@ extends CanvasLayer
 
 var restraint_level: int = 0
 var status: String = "Free"
+var rooms_crossed: int = 0
 
 @onready var status_label = $Panel/Label
 @onready var portrait = $Panel/CharacterPortrait

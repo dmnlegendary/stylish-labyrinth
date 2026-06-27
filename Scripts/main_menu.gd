@@ -1,6 +1,7 @@
 extends Control
 
 @onready var mute_button = $ButtonContainer/MuteButton
+@onready var backgroundvideo = $BackgroundVideo
 
 func _ready() -> void:
 	# Make sure the mouse cursor is a standard arrow when the menu loads
@@ -9,6 +10,11 @@ func _ready() -> void:
 	# We also make sure PlayerUI is disabled
 	if PlayerUi:
 		PlayerUi.visible = false
+		PlayerUi.restraint_level = 0
+		PlayerUi.rooms_crossed = 0
+		
+	if BackgroundMusic:
+		BackgroundMusic.stop()
 	
 	# Optional: If you want the background music from your Autoload to play here,
 	# and it isn't playing yet, you can trigger it:
@@ -18,6 +24,10 @@ func _on_play_button_pressed() -> void:
 	# We reset the character status and we load the portrait of it
 	PlayerUi.reset_stats()
 	PlayerUi.visible = true
+	
+	# we play music and mute the video background
+	backgroundvideo.paused = true
+	BackgroundMusic.play()
 	
 	# Load the main_room scene
 	get_tree().change_scene_to_file("res://Scenes/room_main.tscn")
