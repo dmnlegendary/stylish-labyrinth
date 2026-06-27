@@ -35,11 +35,12 @@ offset_right = 302.5
 offset_bottom = 88.0
 grow_horizontal = 2
 tooltip_text = "Title!"
+mouse_filter = 1
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0.419608, 0, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0.145098, 1)
 theme_override_colors/font_outline_color = Color(0.825347, 0.859581, 0.91095, 1)
-theme_override_font_sizes/font_size = 64
+theme_override_font_sizes/font_size = 100
 text = "BONDAGE LABERYNTH"
 horizontal_alignment = 1
 

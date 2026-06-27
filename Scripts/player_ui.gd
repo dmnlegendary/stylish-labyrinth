@@ -52,6 +52,9 @@ func trigger_game_over():
 	print("Game Over! The player was fully restrained.")
 	# Here you will eventually use get_tree().change_scene_to_file("res://GameOver.tscn")
 
-
 func _on_timer_timeout() -> void:
 	increase_restraint()
+
+func reset_stats():
+	var restraint_level: int = 0
+	var status: String = "Free"
