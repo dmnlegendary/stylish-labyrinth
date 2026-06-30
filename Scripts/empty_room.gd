@@ -7,9 +7,11 @@ extends Node2D
 func _ready() -> void:
 	PlayerUi.refresh_idle_state()
 	print("Empty room. Safe for now.")
+	PlayerUi.show_dialogue("Nothing to report here...just an empty and boring room")
 	
-	# Wait for 5 seconds to read and watch
-	await get_tree().create_timer(5.0).timeout
+	# Wait for 8 seconds to read and watch
+	await get_tree().create_timer(8.0).timeout
+	PlayerUi.hide_dialogue()
 	
 	# Walking back to hallway
 	PlayerUi.start_walking()

@@ -6,9 +6,11 @@ extends Node2D
 func _ready():
 	PlayerUi.refresh_idle_state()
 	print("You found the exit!")
-	
-	# Wait for 3 seconds so the player can process their victory
-	await get_tree().create_timer(5.0).timeout
+	#
+	PlayerUi.show_dialogue("You found the exit! You are finally free!")
+	# Wait for 5 seconds so the player can process their victory
+	await get_tree().create_timer(8.0).timeout
+	PlayerUi.hide_dialogue()
 	
 	# Play the walk animation as they escape
 	# PlayerUi.start_walking()

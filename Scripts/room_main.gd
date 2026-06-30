@@ -96,6 +96,27 @@ func enter_door(door_chosen: String):
 	# Lets determine which scene is gonna be loaded after
 	var next_scene_path = ""
 	
+	# We also set the dialogue options for the dialogue box to display
+	var choice: String
+	var text_for_doors: Array[String] = [
+		"You push against a heavy barrier. It groans as it drags across the stone floor...",
+		"You step forward into a shadowed passage. The air feels thick and uncertain...",
+		"The surface chills your hand as you move it aside. A cold draft seeps into the chamber..."
+		]
+	# Ensure the array is not empty before selecting
+	if text_for_doors.size() > 0:
+		# Pick a random element
+		var random_index = randi() % text_for_doors.size()
+		choice = text_for_doors[random_index]
+		print("Random choice:", choice)
+	else:
+		print("The array is empty.")
+	# Here we trigger the dialogue box
+	PlayerUi.show_dialogue(choice)
+	# Wait for player to read it
+	get_tree().create_timer(7).timeout
+	PlayerUi.hide_dialogue()
+	
 	if probability_for_player <= trapTrigger:
 		next_scene_path = trap_door_scene
 	elif probability_for_player > trapTrigger and probability_for_player <= 100-escapeTrigger:

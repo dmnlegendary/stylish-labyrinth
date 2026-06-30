@@ -179,4 +179,26 @@ autowrap_mode = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 8.0
 
+[node name="DialogueBox" type="Panel" parent="."]
+offset_left = 350.0
+offset_top = 470.0
+offset_right = 1350.0
+offset_bottom = 648.0
+
+[node name="DialogueText" type="Label" parent="DialogueBox"]
+layout_mode = 0
+offset_left = 141.0
+offset_top = 25.0
+offset_right = 871.0
+offset_bottom = 157.0
+theme_override_font_sizes/font_size = 32
+text = "Hola jotos andamos ready pa lo que sea pinches pendejos"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TypewriterTimer" type="Timer" parent="DialogueBox"]
+wait_time = 0.1
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DialogueBox/TypewriterTimer" to="." method="_on_typewriter_timer_timeout"]
